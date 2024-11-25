@@ -15,7 +15,7 @@ ingress:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
   hosts:
-    - host: mobsf.lab.lan
+    - host: mobsf.loc.com
       paths:
         - path: /
           pathType: Prefix
