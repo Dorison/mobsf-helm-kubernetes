@@ -1,0 +1,6 @@
+apiVersion: v2
+name: mobsf
+description: A Helm chart for deploying MobSF (Mobile Security Framework)
+type: application
+version: 0.1.0
+appVersion: "latest"
