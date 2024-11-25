@@ -23,8 +23,10 @@ spec:
 {{- end }}
 {{- if .Values.ingress.tls.enabled }}
   tls:
-    - secretName: {{ .Values.ingress.tls.secretName }}
+{{- range .Values.ingress.tls.secrets }}
+    - secretName: {{ .secretName }}
       hosts:
-{{ toYaml .Values.ingress.hosts | indent 6 }}
+{{ toYaml .hosts | indent 6 }}
+{{- end }}
 {{- end }}
 {{- end }}
