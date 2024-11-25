@@ -1,0 +1,31 @@
+replicaCount: 1
+
+image:
+  repository: opensecurity/mobile-security-framework-mobsf
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8000
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+  hosts:
+    - host: mobsf.lab.lan
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    enabled: true
+    secretName: mobsf-tls
+
+persistence:
+  enabled: true
+  storageClass: microk8s-hostpath
+  accessModes:
+    - ReadWriteOnce
+  size: 5Gi
